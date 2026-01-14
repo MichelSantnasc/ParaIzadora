@@ -20,7 +20,7 @@
             margin: 0;
         }
 
-        /* Tela de Entrada */
+        
         #welcome-overlay {
             position: fixed;
             top: 0;
@@ -65,7 +65,7 @@
             100% { transform: rotate(1080deg) scale(0); opacity: 0; }
         }
 
-        /* Estilo do Site */
+        
         .font-elegant {
             font-family: 'Dancing Script', cursive;
         }
@@ -83,11 +83,12 @@
             to { transform: scale(1.05); }
         }
 
+       
         .scattered-photo {
             position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 8px solid white;
+            width: clamp(80px, 20vw, 150px);
+            height: clamp(80px, 20vw, 150px);
+            border: 4px solid white;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border-radius: 10px;
             z-index: 5;
@@ -130,6 +131,13 @@
         .mural-img:hover {
             transform: scale(1.03);
         }
+
+        
+        .message-text {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+            white-space: pre-line;
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -144,39 +152,48 @@
 
     <audio id="birthday-song" loop>
         <source src="musica.mp3" type="audio/mpeg">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        <source src="" type="audio/mpeg">
     </audio>
 
     <div id="main-content">
-        <!-- Background Decorativo (Fotos Espalhadas) -->
-        <div class="hidden md:block">
-            <img src="img/394632179_850879799918441_1534063573901588402_n.jpg" class="scattered-photo" style="top: 10%; left: 5%; transform: rotate(-15deg);">
-            <img src="img/529442762_18491522782071156_5960691415249795925_n.webp" class="scattered-photo" style="top: 15%; right: 8%; transform: rotate(10deg);">
-            <img src="img/539556537_18495718219071156_3702172302508653712_n.webp" class="scattered-photo" style="bottom: 20%; left: 7%; transform: rotate(5deg);">
-            <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" class="scattered-photo" style="bottom: 15%; right: 5%; transform: rotate(-12deg);">
+        
+        <div class="relative overflow-hidden w-full h-0">
+            <img src="img/394632179_850879799918441_1534063573901588402_n.jpg" class="scattered-photo" style="top: 5vh; left: 2vw; transform: rotate(-15deg);">
+            <img src="img/529442762_18491522782071156_5960691415249795925_n.webp" class="scattered-photo" style="top: 8vh; right: 2vw; transform: rotate(10deg);">
+            <img src="img/539556537_18495718219071156_3702172302508653712_n.webp" class="scattered-photo" style="top: 70vh; left: 3vw; transform: rotate(5deg);">
+            <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" class="scattered-photo" style="top: 75vh; right: 3vw; transform: rotate(-12deg);">
         </div>
 
         <main class="relative z-10">
-            <section class="h-screen flex flex-col items-center justify-center text-center px-4">
-                <div class="mb-6 animate-bounce text-6xl">👑</div>
-                <p class="uppercase tracking-[0.3em] font-bold text-pink-400 mb-2">Feliz Aniversário</p>
+            <section class="h-screen flex flex-col items-center justify-center text-center px-6">
+                <div class="mb-4 animate-bounce text-6xl">👑</div>
+                <p class="uppercase tracking-[0.3em] font-bold text-pink-400 mb-1 text-xs md:text-base">Feliz Aniversário</p>
                 <h1 class="name-izadora">Izadora</h1>
-                <div class="mt-8 glass-card p-6 rounded-3xl shadow-xl max-w-lg">
-                    <p class="text-lg italic text-pink-900 leading-relaxed">
-                        "Hoje celebramos a existência de alguém que torna o mundo mais bonito apenas por estar nele. Que seu brilho nunca se apague!"
+                
+               
+                <div class="mt-6 glass-card p-6 md:p-8 rounded-3xl shadow-xl max-w-2xl overflow-y-auto max-h-[50vh] md:max-h-none">
+                    <p class="message-text italic text-pink-900">
+                        Olha só… às vezes paro e penso no quanto é bom que você exista na minha vida.
+                        Já faz tanto tempo que a gente se conhece, né? Passaram-se estações inteiras, algumas tempestades, muitos dias de sol, despedidas que doeram e reencontros que curaram.
+                        Tanta coisa mudou — a gente mudou, os caminhos mudaram, os medos e os sonhos também…
+                        E mesmo assim, de algum jeito lindo e quase misterioso, você continua aqui.
+                        Continuamos nós.
+                        Conhecer você é uma das coisas mais bonitas que a vida já fez por mim.
+                        Obrigada por tanto tempo, por tanta história, por ainda ser você… e por ainda me deixar ser eu perto de você. ♡
                     </p>
                 </div>
+                
+                <div class="mt-6 animate-pulse text-pink-300 text-sm">Role para ver mais ✨</div>
             </section>
 
             <section class="py-20 px-4 bg-white/50">
-                <h2 class="text-center font-elegant text-5xl mb-16 text-pink-600">
+                <h2 class="text-center font-elegant text-4xl md:text-5xl mb-16 text-pink-600">
                     Toda moça nordestina<br>
                     anda de cabeça em pé<br>
                     tem a beleza feminina<br>
                     e os encantos da mulher.
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
-                    
                     <div class="space-y-4">
                         <img src="img/181648501_292652279203883_4490585433909866680_n.jpg" class="mural-img">
                         <img src="img/245164504_400955284993674_3005277203138371760_n.jpg" class="mural-img">
@@ -199,13 +216,11 @@
             <section id="mensagens" class="py-24 px-6">
                 <div class="max-w-3xl mx-auto space-y-12">
                     <h2 class="text-center font-elegant text-5xl mb-12 text-pink-600">Recadinhos de Carinho</h2>
-                    
                     <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-r-8 border-pink-500 transform -rotate-1">
                         <h3 class="text-2xl font-bold text-pink-600 mb-4">Você é Especial ✨</h3>
-                        <p class="text-xl leading-relaxed">Iza, sua amizade é o melhor presente que a vida poderia me dar! Que este novo ciclo seja repleto de conquistas, viagens, risadas intermináveis e muita felicidade. Continue sendo essa mulher forte e iluminada!</p>
+                        <p class="text-xl leading-relaxed">Iza, sua amizade é o melhor presente que a vida poderia me dar! Que este novo ciclo seja repleto de conquistas, viagens, risadas intermináveis e muita felicidade.</p>
                     </div>
-
-                    <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-l-8 border-yellow-400 transform rotate-1">
+                                        <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-l-8 border-yellow-400 transform rotate-1">
                         <h3 class="text-2xl font-bold text-yellow-600 mb-4">Para Todo o Sempre 💖</h3>
                         <p class="text-xl leading-relaxed">Não existem palavras suficientes para descrever o quanto você é importante. Desejo que seu aniversário seja apenas o começo de um ano extraordinário, cheio de amor e saúde. Parabéns por ser quem você é!</p>
                     </div>
@@ -231,10 +246,7 @@
             const audio = document.getElementById('birthday-song');
 
             btn.classList.add('spin');
-
-            for(let i=0; i<50; i++) {
-                setTimeout(createBurst, i * 20);
-            }
+            for(let i=0; i<50; i++) { setTimeout(createBurst, i * 20); }
 
             setTimeout(() => {
                 overlay.style.opacity = '0';
@@ -242,7 +254,6 @@
                 main.style.opacity = '1';
                 document.body.style.overflow = 'auto';
                 audio.play().catch(e => console.log("Áudio aguardando interação"));
-                
                 setInterval(createConfetti, 150);
                 setInterval(createFloatingEmoji, 800);
             }, 1000);
@@ -253,25 +264,14 @@
             const emojis = ['✨', '🎉', '💖', '🔥', '🌸', '🎁', '⭐', '🎈'];
             burst.className = 'emoji-burst';
             burst.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-            
             const startX = window.innerWidth / 2;
             const startY = window.innerHeight / 2;
-            
             burst.style.left = startX + 'px';
             burst.style.top = startY + 'px';
-            
             document.body.appendChild(burst);
-
             const destX = (Math.random() - 0.5) * 1000;
             const destY = (Math.random() - 0.5) * 1000;
-
-            burst.animate([
-                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
-                { transform: `translate(${destX}px, ${destY}px) scale(0)`, opacity: 0 }
-            ], {
-                duration: 1000 + Math.random() * 500,
-                easing: 'ease-out'
-            }).onfinish = () => burst.remove();
+            burst.animate([{ transform: 'translate(0, 0) scale(1)', opacity: 1 }, { transform: `translate(${destX}px, ${destY}px) scale(0)`, opacity: 0 }], { duration: 1000 + Math.random() * 500, easing: 'ease-out' }).onfinish = () => burst.remove();
         }
 
         function createConfetti() {
@@ -281,11 +281,7 @@
             c.style.left = Math.random() * 100 + 'vw';
             c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             document.body.appendChild(c);
-
-            c.animate([
-                { top: '-10px', transform: 'rotate(0deg)' },
-                { top: '100vh', transform: `rotate(${Math.random() * 720}deg)` }
-            ], { duration: 3000, easing: 'linear' }).onfinish = () => c.remove();
+            c.animate([{ top: '-10px', transform: 'rotate(0deg)' }, { top: '100vh', transform: `rotate(${Math.random() * 720}deg)` }], { duration: 3000, easing: 'linear' }).onfinish = () => c.remove();
         }
 
         function createFloatingEmoji() {
@@ -296,11 +292,7 @@
             e.style.left = Math.random() * 95 + 'vw';
             e.style.bottom = '-50px';
             document.body.appendChild(e);
-            
-            e.animate([
-                { transform: 'translateY(0)' },
-                { transform: 'translateY(-110vh)' }
-            ], { duration: 5000 }).onfinish = () => e.remove();
+            e.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-110vh)' }], { duration: 5000 }).onfinish = () => e.remove();
         }
     </script>
 </body>
