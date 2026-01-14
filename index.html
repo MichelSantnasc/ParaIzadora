@@ -134,7 +134,6 @@
 </head>
 <body class="min-h-screen">
 
- 
     <div id="welcome-overlay">
         <h2 class="text-white text-3xl font-elegant mb-8 animate-pulse text-center px-4">Feito com carinho...</h2>
         <button class="magic-button" id="start-btn" onclick="blastOff()">
@@ -143,19 +142,18 @@
         <p class="text-white/80 mt-6 font-bold uppercase tracking-widest text-sm">Clique</p>
     </div>
 
-
     <audio id="birthday-song" loop>
         <source src="musica.mp3" type="audio/mpeg">
-        <source src="https://soundcloud.com/cms-manoel-guilherme-da-silveira-filho/feliz-anivers-rio-parab-ns-pra" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     </audio>
 
     <div id="main-content">
-
+        <!-- Background Decorativo (Fotos Espalhadas) -->
         <div class="hidden md:block">
-            <img src="/img/394632179_850879799918441_1534063573901588402_n.jpg" onerror="this.src=''" class="scattered-photo" style="top: 10%; left: 5%; transform: rotate(-15deg);">
-            <img src="/img/529442762_18491522782071156_5960691415249795925_n.webp" onerror="this.src=''" class="scattered-photo" style="top: 15%; right: 8%; transform: rotate(10deg);">
-            <img src="img/539556537_18495718219071156_3702172302508653712_n.webp" onerror="this.src=''" class="scattered-photo" style="bottom: 20%; left: 7%; transform: rotate(5deg);">
-            <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" onerror="this.src=''" class="scattered-photo" style="bottom: 15%; right: 5%; transform: rotate(-12deg);">
+            <img src="img/394632179_850879799918441_1534063573901588402_n.jpg" class="scattered-photo" style="top: 10%; left: 5%; transform: rotate(-15deg);">
+            <img src="img/529442762_18491522782071156_5960691415249795925_n.webp" class="scattered-photo" style="top: 15%; right: 8%; transform: rotate(10deg);">
+            <img src="img/539556537_18495718219071156_3702172302508653712_n.webp" class="scattered-photo" style="bottom: 20%; left: 7%; transform: rotate(5deg);">
+            <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" class="scattered-photo" style="bottom: 15%; right: 5%; transform: rotate(-12deg);">
         </div>
 
         <main class="relative z-10">
@@ -171,27 +169,29 @@
             </section>
 
             <section class="py-20 px-4 bg-white/50">
-                <h2 class="text-center font-elegant text-5xl mb-16 text-pink-600">Toda moça nordestina<br>
-                                                                                    anda de cabeça em pé<br>
-                                                                                tem a beleza feminina<br>
-                                                                                        e os encantos da mulher.</h2>
+                <h2 class="text-center font-elegant text-5xl mb-16 text-pink-600">
+                    Toda moça nordestina<br>
+                    anda de cabeça em pé<br>
+                    tem a beleza feminina<br>
+                    e os encantos da mulher.
+                </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
                     
                     <div class="space-y-4">
-                        <img src="/img/181648501_292652279203883_4490585433909866680_n.jpg" onerror="this.src=''" class="mural-img">
-                        <img src="/img/245164504_400955284993674_3005277203138371760_n.jpg" onerror="this.src=''" class="mural-img">
+                        <img src="img/181648501_292652279203883_4490585433909866680_n.jpg" class="mural-img">
+                        <img src="img/245164504_400955284993674_3005277203138371760_n.jpg" class="mural-img">
                     </div>
                     <div class="space-y-4 pt-8">
-                        <img src="/img/145201466_1053505318481450_446422133813427434_n.jpg" onerror="this.src=''" class="mural-img">
-                        <img src="/img/271180754_410973877441387_5463346443124595102_n.jpg" onerror="this.src=''" class="mural-img">
+                        <img src="img/145201466_1053505318481450_446422133813427434_n.jpg" class="mural-img">
+                        <img src="img/271180754_410973877441387_5463346443124595102_n.jpg" class="mural-img">
                     </div>
                     <div class="space-y-4">
-                        <img src="/img/567718938_18504737281071156_625376737933803377_n.webp" onerror="this.src=''" class="mural-img">
-                        <img src="/img/394632179_850879799918441_1534063573901588402_n.jpg" onerror="this.src=''" class="mural-img">
+                        <img src="img/567718938_18504737281071156_625376737933803377_n.webp" class="mural-img">
+                        <img src="img/394632179_850879799918441_1534063573901588402_n.jpg" class="mural-img">
                     </div>
                     <div class="space-y-4 pt-12">
-                        <img src="/img/245113245_1006569253533840_3751693876771142247_n.jpg" onerror="this.src=''" class="mural-img">
-                        <img src="/img/558540221_18501850846071156_8978010746468829307_n.webp" onerror="this.src=''" class="mural-img">
+                        <img src="img/245113245_1006569253533840_3751693876771142247_n.jpg" class="mural-img">
+                        <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" class="mural-img">
                     </div>
                 </div>
             </section>
@@ -230,15 +230,12 @@
             const main = document.getElementById('main-content');
             const audio = document.getElementById('birthday-song');
 
-            // 1. Gira o botão
             btn.classList.add('spin');
 
-            // 2. Solta fogos e emojis
             for(let i=0; i<50; i++) {
                 setTimeout(createBurst, i * 20);
             }
 
-            // 3. Transição de tela
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 overlay.style.visibility = 'hidden';
@@ -246,7 +243,6 @@
                 document.body.style.overflow = 'auto';
                 audio.play().catch(e => console.log("Áudio aguardando interação"));
                 
-                // Inicia efeitos contínuos
                 setInterval(createConfetti, 150);
                 setInterval(createFloatingEmoji, 800);
             }, 1000);
@@ -308,5 +304,4 @@
         }
     </script>
 </body>
-
 </html>
