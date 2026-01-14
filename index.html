@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Izadora!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff4d6d;
+            --secondary-gold: #ffb703;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background: #fff0f3;
+            color: #4a1c24;
+            margin: 0;
+        }
+
+        /* Tela de Entrada */
+        #welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ffb7b7, #ff4d6d);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 1s ease-out, visibility 1s;
+        }
+
+        .magic-button {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: none;
+        }
+
+        .magic-button:hover {
+            transform: scale(1.1);
+        }
+
+        .magic-button.spin {
+            animation: spinAndBlast 1s forwards;
+        }
+
+        @keyframes spinAndBlast {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(720deg) scale(1.5); }
+            100% { transform: rotate(1080deg) scale(0); opacity: 0; }
+        }
+
+        /* Estilo do Site */
+        .font-elegant {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .name-izadora {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(4rem, 15vw, 10rem);
+            color: #ff0054;
+            text-shadow: 0 0 10px rgba(255, 0, 84, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .scattered-photo {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            z-index: 5;
+            transition: all 0.5s ease;
+            object-fit: cover;
+        }
+
+        .emoji-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2100;
+            font-size: 2rem;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            z-index: 90;
+        }
+
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .mural-img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .mural-img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+ 
+    <div id="welcome-overlay">
+        <h2 class="text-white text-3xl font-elegant mb-8 animate-pulse text-center px-4">Feito com carinho...</h2>
+        <button class="magic-button" id="start-btn" onclick="blastOff()">
+            🎁
+        </button>
+        <p class="text-white/80 mt-6 font-bold uppercase tracking-widest text-sm">Clique</p>
+    </div>
+
+
+    <audio id="birthday-song" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+        <source src="https://soundcloud.com/cms-manoel-guilherme-da-silveira-filho/feliz-anivers-rio-parab-ns-pra" type="audio/mpeg">
+    </audio>
+
+    <div id="main-content">
+
+        <div class="hidden md:block">
+            <img src="/img/394632179_850879799918441_1534063573901588402_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?w=300'" class="scattered-photo" style="top: 10%; left: 5%; transform: rotate(-15deg);">
+            <img src="/img/529442762_18491522782071156_5960691415249795925_n.webp" onerror="this.src='https://images.unsplash.com/photo-1464347601390-25e2842a37f7?w=300'" class="scattered-photo" style="top: 15%; right: 8%; transform: rotate(10deg);">
+            <img src="img/539556537_18495718219071156_3702172302508653712_n.webp" onerror="this.src='https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=300'" class="scattered-photo" style="bottom: 20%; left: 7%; transform: rotate(5deg);">
+            <img src="img/558540221_18501850846071156_8978010746468829307_n.webp" onerror="this.src='https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=300'" class="scattered-photo" style="bottom: 15%; right: 5%; transform: rotate(-12deg);">
+        </div>
+
+        <main class="relative z-10">
+            <section class="h-screen flex flex-col items-center justify-center text-center px-4">
+                <div class="mb-6 animate-bounce text-6xl">👑</div>
+                <p class="uppercase tracking-[0.3em] font-bold text-pink-400 mb-2">Feliz Aniversário</p>
+                <h1 class="name-izadora">Izadora</h1>
+                <div class="mt-8 glass-card p-6 rounded-3xl shadow-xl max-w-lg">
+                    <p class="text-lg italic text-pink-900 leading-relaxed">
+                        "Hoje celebramos a existência de alguém que torna o mundo mais bonito apenas por estar nele. Que seu brilho nunca se apague!"
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-20 px-4 bg-white/50">
+                <h2 class="text-center font-elegant text-5xl mb-16 text-pink-600">Toda moça nordestina<br>
+                                                                                    anda de cabeça em pé<br>
+                                                                                tem a beleza feminina<br>
+                                                                                        e os encantos da mulher.</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                    
+                    <div class="space-y-4">
+                        <img src="/img/181648501_292652279203883_4490585433909866680_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400'" class="mural-img">
+                        <img src="/img/245164504_400955284993674_3005277203138371760_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400'" class="mural-img">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="/img/145201466_1053505318481450_446422133813427434_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1533294160622-d5fece3e080d?w=400'" class="mural-img">
+                        <img src="/img/271180754_410973877441387_5463346443124595102_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=400'" class="mural-img">
+                    </div>
+                    <div class="space-y-4">
+                        <img src="/img/567718938_18504737281071156_625376737933803377_n.webp" onerror="this.src='https://images.unsplash.com/photo-1514525253344-991422a70a05?w=400'" class="mural-img">
+                        <img src="/img/394632179_850879799918441_1534063573901588402_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=400'" class="mural-img">
+                    </div>
+                    <div class="space-y-4 pt-12">
+                        <img src="/img/245113245_1006569253533840_3751693876771142247_n.jpg" onerror="this.src='https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=400'" class="mural-img">
+                        <img src="/img/558540221_18501850846071156_8978010746468829307_n.webp" onerror="this.src='https://images.unsplash.com/photo-1521478706270-f2e33c203d95?w=400'" class="mural-img">
+                    </div>
+                </div>
+            </section>
+
+            <section id="mensagens" class="py-24 px-6">
+                <div class="max-w-3xl mx-auto space-y-12">
+                    <h2 class="text-center font-elegant text-5xl mb-12 text-pink-600">Recadinhos de Carinho</h2>
+                    
+                    <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-r-8 border-pink-500 transform -rotate-1">
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">Você é Especial ✨</h3>
+                        <p class="text-xl leading-relaxed">Iza, sua amizade é o melhor presente que a vida poderia me dar! Que este novo ciclo seja repleto de conquistas, viagens, risadas intermináveis e muita felicidade. Continue sendo essa mulher forte e iluminada!</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-l-8 border-yellow-400 transform rotate-1">
+                        <h3 class="text-2xl font-bold text-yellow-600 mb-4">Para Todo o Sempre 💖</h3>
+                        <p class="text-xl leading-relaxed">Não existem palavras suficientes para descrever o quanto você é importante. Desejo que seu aniversário seja apenas o começo de um ano extraordinário, cheio de amor e saúde. Parabéns por ser quem você é!</p>
+                    </div>
+
+                    <div class="glass-card p-10 rounded-[3rem] shadow-2xl border-r-8 border-purple-500 transform -rotate-1">
+                        <h3 class="text-2xl font-bold text-purple-600 mb-4">Brilhe Muito 🌟</h3>
+                        <p class="text-xl leading-relaxed">Que todos os seus sonhos, dos mais simples aos mais ambiciosos, encontrem o caminho para se tornarem realidade. Você merece o mundo e muito mais. Feliz vida, Izadora!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="py-16 text-center text-pink-400 font-bold uppercase tracking-tighter opacity-50">
+            Feito com todo amor do mundo • 2026
+        </footer>
+    </div>
+
+    <script>
+        function blastOff() {
+            const btn = document.getElementById('start-btn');
+            const overlay = document.getElementById('welcome-overlay');
+            const main = document.getElementById('main-content');
+            const audio = document.getElementById('birthday-song');
+
+            // 1. Gira o botão
+            btn.classList.add('spin');
+
+            // 2. Solta fogos e emojis
+            for(let i=0; i<50; i++) {
+                setTimeout(createBurst, i * 20);
+            }
+
+            // 3. Transição de tela
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                overlay.style.visibility = 'hidden';
+                main.style.opacity = '1';
+                document.body.style.overflow = 'auto';
+                audio.play().catch(e => console.log("Áudio aguardando interação"));
+                
+                // Inicia efeitos contínuos
+                setInterval(createConfetti, 150);
+                setInterval(createFloatingEmoji, 800);
+            }, 1000);
+        }
+
+        function createBurst() {
+            const burst = document.createElement('div');
+            const emojis = ['✨', '🎉', '💖', '🔥', '🌸', '🎁', '⭐', '🎈'];
+            burst.className = 'emoji-burst';
+            burst.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            const startX = window.innerWidth / 2;
+            const startY = window.innerHeight / 2;
+            
+            burst.style.left = startX + 'px';
+            burst.style.top = startY + 'px';
+            
+            document.body.appendChild(burst);
+
+            const destX = (Math.random() - 0.5) * 1000;
+            const destY = (Math.random() - 0.5) * 1000;
+
+            burst.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${destX}px, ${destY}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: 1000 + Math.random() * 500,
+                easing: 'ease-out'
+            }).onfinish = () => burst.remove();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff4d6d', '#ffb703', '#8ac926', '#1982c4', '#6a4c93'];
+            const c = document.createElement('div');
+            c.className = 'confetti';
+            c.style.left = Math.random() * 100 + 'vw';
+            c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.appendChild(c);
+
+            c.animate([
+                { top: '-10px', transform: 'rotate(0deg)' },
+                { top: '100vh', transform: `rotate(${Math.random() * 720}deg)` }
+            ], { duration: 3000, easing: 'linear' }).onfinish = () => c.remove();
+        }
+
+        function createFloatingEmoji() {
+            const emojis = ['🎈', '🎂', '🎉', '💖', '✨', '👯‍♀️', '🎊'];
+            const e = document.createElement('div');
+            e.className = 'fixed pointer-events-none z-50 text-2xl';
+            e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            e.style.left = Math.random() * 95 + 'vw';
+            e.style.bottom = '-50px';
+            document.body.appendChild(e);
+            
+            e.animate([
+                { transform: 'translateY(0)' },
+                { transform: 'translateY(-110vh)' }
+            ], { duration: 5000 }).onfinish = () => e.remove();
+        }
+    </script>
+</body>
+</html>
